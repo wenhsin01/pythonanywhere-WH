@@ -1,4 +1,4 @@
-# _Random Joke & Riddle Generator_
+# _期末報告-Random Joke & Riddle Generator_
 
 在 PythonAnywhere 上建立的 Flask Web App，提供隨機笑話與隨機謎語，並且有封面與選擇頁。
 
