@@ -2,22 +2,25 @@
 
 在 PythonAnywhere 上建立的 Flask Web App，提供隨機笑話與隨機謎語，並且有封面與選擇頁。
 
-# 目錄
+[成果展示]([https://www.python.org/downloads/).
 
-- [Flask介紹]
-- [專案介紹]
-- [功能特色]
-- [pythonanywhere結構]
-- [環境設置]
+## 目錄
 
-# Flask介紹
+- Flask介紹
+- 專案介紹
+- 功能特色
+- pythonanywhere結構
+- 環境設置
+- Web App 設定 (WSGI)
+
+## Flask介紹
 
 Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求與回應，不強制特定專案結構；透過 @app.route 定義路由並支援多種 HTTP 方法與
 動態參數，使開發 REST API 與網頁視圖直覺簡單；內建 Jinja2 模板引擎與預設的 static 資料夾，方便產生動態 HTML 並管理 CSS/JS/圖片等靜態資
 源；核心保持簡潔，常見功能如資料庫操作、表單驗證與使用者登入可透過豐富擴充套件靈活引入；適合快速原型、小型或中型專案，並能搭配生產環境伺服器
 與反向代理部署到雲端。
 
-# 專案介紹
+## 專案介紹
 
 這是一個使用 Flask 框架打造的 Web 應用，部署於 PythonAnywhere。  
 
@@ -25,8 +28,11 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 
 整體設計追求簡潔、專業，並且對行動裝置友好。
 
-# 功能特色
-- 封面（Cover Page）與「開始體驗」按鈕:使用大圖搭配半透明遮罩與醒目按鈕，引導使用者進入主體流程
+## 功能特色
+
+### **1.封面（Cover Page）與「開始體驗」按鈕**
+
+使用大圖搭配半透明遮罩與醒目按鈕，引導使用者進入主體流程
 
 ```html
 <!DOCTYPE html>
@@ -67,7 +73,9 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </html>
 ```
 
-- 選擇頁（Choice Page)切換笑話／謎語:提供簡潔明瞭的按鈕選單，讓使用者自由選擇要體驗的內容類型
+### **2.選擇頁（Choice Page)切換笑話／謎語**
+
+提供簡潔明瞭的按鈕選單，讓使用者自由選擇要體驗的內容類型
 
 ```html
 <!DOCTYPE html>
@@ -110,7 +118,10 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </html>
 ```
 
-- 隨機笑話生產器（Random Joke Generator）:每次進入或按下「再來一則」都會從笑話清單中隨機挑選一則新笑話
+### **3.隨機笑話生產器**
+
+
+每次進入或按下「再來一則」都會從笑話清單中隨機挑選一則新笑話
 
 ```html
 <!DOCTYPE html>
@@ -246,7 +257,10 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </html>
 ```
 
-- 隨機謎語生產器（Random Riddle Generator）:同理地，每次操作都會隨機顯示一則謎語，增添互動趣味
+### **4.隨機謎語生產器（Random Riddle Generator）**
+
+
+同理地，每次操作都會隨機顯示一則謎語，增添互動趣味
 
 ```html
 <!DOCTYPE html>
@@ -382,11 +396,13 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </html>
 ```
 
-- 背景圖隨機切換:在每次頁面載入或按鈕觸發時自動更換不同背景，營造視覺新鮮感
+### **5.背景圖隨機切換**
 
--1.上傳多張背景圖
+在每次頁面載入或按鈕觸發時自動更換不同背景，營造視覺新鮮感
 
--2.在 /body 前加 JavaScript
+- 上傳多張背景圖
+
+- 在 /body 前加 JavaScript
 
 ```html
 <script>
@@ -412,9 +428,11 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </script>
 ```
 
-- 卡片置中:使用 Flexbox 垂直水平置中
+### **6.卡片置中**
 
--1.在最前面，新增 html, body { height: 100%; margin:0; }
+使用 Flexbox 垂直水平置中
+
+- 在最前面，新增 html, body { height: 100%; margin:0; }
 
 ```css
 html, body {
@@ -423,7 +441,7 @@ html, body {
 }
 ```
 
--2.調整 body 及 .container 的 CSS
+- 調整 body 及 .container 的 CSS
 
 ```css
 body {
@@ -441,10 +459,12 @@ body {
 }
 ```
 
-- 玻璃模糊效果:backdrop-filter 模糊背景，讓內容更突出、質感更佳
+### **7.玻璃模糊效果**
+
+backdrop-filter 模糊背景，讓內容更突出、質感更佳
 
 ```html
-    .container {
+  .container {
       max-width: 600px;
       padding: 40px 20px;
       background: rgba(255,255,255,0.1);
@@ -489,7 +509,9 @@ body {
     }
 ```
 
-- 響應式設計，手機與桌機皆可友好瀏覽:透過 Media Query 自動調整版面，確保手機與桌機都有最佳瀏覽體驗
+### **8.響應式設計，手機與桌機皆可友好瀏覽**
+
+透過 Media Query 自動調整版面，確保手機與桌機都有最佳瀏覽體驗
 
 ```html
     @media (max-width: 480px) {
@@ -501,3 +523,98 @@ body {
       .btn { padding: 10px 20px; }
     }
 ```
+
+## pythonanywhere結構
+
+random_joke/
+
+├── app.py # Flask 應用主程式
+
+├── requirements.txt # 套件清單
+
+├── static/
+
+│ └── images/ # 背景圖、封面圖等
+
+│ ├── cover.png
+
+│ ├── animal.png
+
+│ ├── animall.png
+
+│ ├── monster.png
+
+│ ├── shark.png
+
+│ ├── small.png
+
+│ └── think.png
+
+└── templates/
+
+├── cover.html # 封面
+
+├── choice.html # 選擇頁
+
+├── joke.html # 笑話頁
+
+└── riddle.html # 謎語頁
+
+## 環境設置
+
+### **1.建立 venv**
+
+```bash
+mkvirtualenv random_joke-env --python=/usr/bin/python3.8
+# 或 python3.8 -m venv ~/random_joke-env
+```
+
+### **2.啟動 venv**
+
+```bash
+workon random_joke-env    # virtualenvwrapper  
+# 或 source ~/random_joke-env/bin/activate
+```
+
+### **3.安裝套件**
+
+```bash
+pip install Flask flask-restful
+pip freeze > requirements.txt
+```
+
+### **4.停用 venv**
+
+```bash
+deactivate
+```
+
+## Web App 設定 (WSGI)
+
+### **1.新增 Web App**
+
+Dashboard → Web → Add a new web app → Manual configuration → Python 3.8
+
+### **2.Source code**
+
+填入 /home/<username>/random_joke
+
+### **3.Virtualenv**
+
+填入 /home/<username>/.virtualenvs/random_joke-env
+
+### **4.WSGI 檔案**
+
+在 /var/www/<username>_pythonanywhere_com_wsgi.py 中加入
+
+```python
+import sys
+sys.path.insert(0, '/home/<username>/.virtualenvs/random_joke-env/lib/python3.8/site-packages')
+sys.path.insert(0, '/home/<username>/random_joke')
+
+from app import app as application
+```
+
+### **5.Reload**
+
+在 Web 頁面按 Reload，讓新設定生效
