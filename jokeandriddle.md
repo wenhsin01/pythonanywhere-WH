@@ -2,7 +2,7 @@
 
 在 PythonAnywhere 上建立的 Flask Web App，提供隨機笑話與隨機謎語，並且有封面與選擇頁。
 
-[成果展示]([https://www.python.org/downloads/).
+[成果展示](https://noheart.pythonanywhere.com/).
 
 ## 目錄
 
@@ -257,7 +257,7 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </html>
 ```
 
-### **4.隨機謎語生產器（Random Riddle Generator）**
+### **4.隨機謎語生產器**
 
 
 同理地，每次操作都會隨機顯示一則謎語，增添互動趣味
