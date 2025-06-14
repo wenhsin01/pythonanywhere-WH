@@ -2,7 +2,7 @@
 
 在 PythonAnywhere 上建立的 Flask Web App，提供隨機笑話與隨機謎語，並且有封面與選擇頁。
 
-## 目錄
+# 目錄
 
 - [Flask介紹]
 - [專案介紹]
@@ -10,14 +10,14 @@
 - [pythonanywhere結構]
 - [環境設置]
 
-## Flask介紹
+# Flask介紹
 
 Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求與回應，不強制特定專案結構；透過 @app.route 定義路由並支援多種 HTTP 方法與
 動態參數，使開發 REST API 與網頁視圖直覺簡單；內建 Jinja2 模板引擎與預設的 static 資料夾，方便產生動態 HTML 並管理 CSS/JS/圖片等靜態資
 源；核心保持簡潔，常見功能如資料庫操作、表單驗證與使用者登入可透過豐富擴充套件靈活引入；適合快速原型、小型或中型專案，並能搭配生產環境伺服器
 與反向代理部署到雲端。
 
-## 專案介紹
+# 專案介紹
 
 這是一個使用 Flask 框架打造的 Web 應用，部署於 PythonAnywhere。  
 
@@ -25,8 +25,7 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 
 整體設計追求簡潔、專業，並且對行動裝置友好。
 
-## 功能特色:使用大圖搭配半透明遮罩與醒目按鈕，引導使用者進入主體流程
-
+# 功能特色
 - 封面（Cover Page）與「開始體驗」按鈕:使用大圖搭配半透明遮罩與醒目按鈕，引導使用者進入主體流程
 
 ```html
@@ -385,9 +384,9 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 
 - 背景圖隨機切換:在每次頁面載入或按鈕觸發時自動更換不同背景，營造視覺新鮮感
 
-1.上傳多張背景圖
+-1.上傳多張背景圖
 
-2.在 /body 前加 JavaScript
+-2.在 /body 前加 JavaScript
 
 ```html
 <script>
@@ -413,5 +412,92 @@ Flask 是用 Python 撰寫的輕量級 Web 框架，專注於處理 HTTP 請求�
 </script>
 ```
 
-- 卡片置中、玻璃模糊效果  
-- 響應式設計，手機與桌機皆可友好瀏覽
+- 卡片置中:使用 Flexbox 垂直水平置中
+
+-1.在最前面，新增 html, body { height: 100%; margin:0; }
+
+```css
+html, body {
+  height: 100%;     /* 讓 html、body 都佔滿視窗高度 */
+  margin: 0;        /* 清掉任何預設空白 */
+}
+```
+
+-2.調整 body 及 .container 的 CSS
+
+```css
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #fff;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+  /* 讓背景圖由 JS 負責，CSS 這裡只留遮罩 */
+
+  min-height: 100vh;         /* 視窗高度 100%，才能垂直置中 */
+  display: flex;             /* 建立 flex 容器 */
+  flex-direction: column;    /* 主軸垂直排列 */
+  align-items: center;       /* 垂直置中 */
+  justify-content: center;   /* 水平置中 */
+  text-align: center;
+}
+```
+
+- 玻璃模糊效果:backdrop-filter 模糊背景，讓內容更突出、質感更佳
+
+```html
+    .container {
+      max-width: 600px;
+      padding: 40px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(8px); /* 背後模糊 */
+    }
+
+    /* 標題 */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* 笑話文字 */
+    .joke-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      padding: 0 10px;
+    }
+
+    /* 按鈕 */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background-color: #e91e63;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+```
+
+- 響應式設計，手機與桌機皆可友好瀏覽:透過 Media Query 自動調整版面，確保手機與桌機都有最佳瀏覽體驗
+
+```html
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 10px;
+      }
+      h1 { font-size: 2rem; }
+      .joke-text { font-size: 1rem; }
+      .btn { padding: 10px 20px; }
+    }
+```
